@@ -22,7 +22,9 @@ FROM hongkongkiwi/overdrive:latest
 COPY --from=builder "/built" /usr/bin
 COPY ./crontab /etc/crontab
 
-RUN touch "/etc/crontab" && \
+RUN apk --no-cache add python3 && \
+    pip3 install mutagen && \
+    touch "/etc/crontab" && \
     echo "Fixing Permissions..." && \
     chmod +x /usr/bin/supercronic
 
