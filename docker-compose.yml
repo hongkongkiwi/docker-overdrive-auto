@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  overdrive:
+    build: .
+    volumes:
+      - /private/var/db/timezone/tz/2019c.1.0/zoneinfo/Asia/Hong_Kong:/etc/localtime:ro
+#      - ./config:/config:rw
+#      - ./test:/dir1:rw
+#    environment:
+#      - UMAP=andy:501:20
+#      - GMAP=staff:20
