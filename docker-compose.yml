@@ -4,6 +4,8 @@ services:
     build: .
     volumes:
       - /private/var/db/timezone/tz/2019c.1.0/zoneinfo/Asia/Hong_Kong:/etc/localtime:ro
+      - ./crontab:/etc/crontab:ro
+
 #      - ./config:/config:rw
 #      - ./test:/dir1:rw
 #    environment:

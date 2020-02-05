@@ -30,7 +30,7 @@ ENV TZ=Asia/Hong_Kong \
     MONITOR_DIR="/odm" \
     OUTPUT_DIR="/mp3"
 
-VOLUME ["/odm", "mp3"]
+VOLUME ["/odm", "/mp3"]
 
 ENTRYPOINT ["supercronic"]
 CMD ["/etc/crontab"]

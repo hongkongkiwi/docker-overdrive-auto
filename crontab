@@ -1,5 +1,5 @@
 # Run on container start
-#start echo "hello"
+@start echo "hello"
 
 # Run every minute
 #*/1 * * * * echo "hello"
