@@ -5,6 +5,10 @@ services:
     volumes:
       - /private/var/db/timezone/tz/2019c.1.0/zoneinfo/Asia/Hong_Kong:/etc/localtime:ro
       - ./crontab:/etc/crontab:ro
+      - ./scripts/download.sh:/usr/bin/download.sh:rw
+      - ./odm:/odm:rw
+      - ./processed-odm:/processed-odm:rw
+      - ./mp3:/mp3:rw
 
 #      - ./config:/config:rw
 #      - ./test:/dir1:rw

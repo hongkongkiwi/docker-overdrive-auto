@@ -21,18 +21,21 @@ RUN echo "Getting Builder Packages..." && \
 FROM hongkongkiwi/overdrive:latest
 COPY --from=builder "/built" /usr/bin
 COPY ./crontab /etc/crontab
+COPY ./scripts/* /usr/bin
 
 RUN apk --no-cache add python3 && \
     pip3 install mutagen && \
     touch "/etc/crontab" && \
     echo "Fixing Permissions..." && \
-    chmod +x /usr/bin/supercronic
+    chmod +x /usr/bin/supercronic && \
+    chmod +x /usr/bin/*.sh
 
-ENV TZ=Asia/Hong_Kong \
-    MONITOR_DIR="/odm" \
-    OUTPUT_DIR="/mp3"
+ENV TZ="Asia/Hong_Kong" \
+    MP3_OUTPUT_DIR="/mp3" \
+    ODM_INPUT_DIR="/odm" \
+    ODM_OUTPUT_DIR="/processed-odm"
 
-VOLUME ["/odm", "/mp3"]
+VOLUME ["/mp3", "/odm", "/processed-odm"]
 
 ENTRYPOINT ["supercronic"]
 CMD ["/etc/crontab"]
